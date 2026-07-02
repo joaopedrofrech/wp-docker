@@ -78,7 +78,7 @@ docker compose -f docker-compose.mariadb.yml down
 - File Browser: files.domain.com
 - Adminer: db.domain.com
 
-## Cloudflare Integration
+## Edge Integration
 
 WP-Docker is designed to run behind Cloudflare with full integration:
 
