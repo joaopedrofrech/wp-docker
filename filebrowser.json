@@ -1,0 +1,16 @@
+{
+  "port": 80,
+  "address": "",
+  "log": "stdout",
+  "database": "/database/filebrowser.db",
+  "root": "/srv",
+  "settings": {
+    "fileMode": 420,
+    "dirMode": 493
+  },
+  "branding": {
+    "name": "Files",
+    "disableUsedPercentage": true,
+    "theme": "dark"
+  }
+}
