@@ -4,6 +4,15 @@ services:
     image: ghcr.io/yunussandikci/wordpress-sqlite:7.0.0-php8.5-fpm
     user: "33:33"
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     command: >
       sh -c '
         # Keep SQLite integration always aligned with the image version on each deploy
@@ -90,6 +99,13 @@ services:
   nginx:
     image: nginx:1.28-alpine
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     depends_on:
       - wordpress
     volumes:
@@ -112,6 +128,13 @@ services:
     healthcheck:
       disable: true
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     environment:
       - PUID=33
       - PGID=33
