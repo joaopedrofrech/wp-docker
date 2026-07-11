@@ -1,7 +1,7 @@
 services:
   # WordPress PHP-FPM with SQLite
   wordpress:
-    image: ghcr.io/yunussandikci/wordpress-sqlite:7.0.0-php8.4-fpm
+    image: ghcr.io/yunussandikci/wordpress-sqlite:7.0.1-php8.4-fpm
     user: "33:33"
     restart: unless-stopped
     security_opt:
