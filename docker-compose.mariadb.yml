@@ -8,7 +8,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: "8m"
         max-file: "3"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -57,7 +57,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: "8m"
         max-file: "3"
     depends_on:
       - mariadb
@@ -139,7 +139,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: "8m"
         max-file: "3"
     depends_on:
       - wordpress
@@ -168,7 +168,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: "10m"
+        max-size: "5m"
         max-file: "3"
     environment:
       - PUID=33
