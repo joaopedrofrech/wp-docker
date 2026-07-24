@@ -10,7 +10,7 @@ Everything is designed to stay practical: fixed image tags, persistent Docker vo
 |---|---|---|
 | WordPress (SQLite compose) | ghcr.io/yunussandikci/wordpress-sqlite:php8.5-fpm | Main app with SQLite integration |
 | WordPress (MariaDB compose) | wordpress:fpm | Main app for external DB mode |
-| Nginx | nginx:1.28-alpine | Web server |
+| Nginx | nginx:1.30.4-alpine | Web server |
 | File Browser | filebrowser/filebrowser:v2.62.2-s6 | File management |
 | Adminer | adminer-5.4.2.php | Database management |
 | MariaDB | mariadb:11.8-noble | Used only in MariaDB compose |

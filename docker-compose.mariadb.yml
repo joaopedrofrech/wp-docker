@@ -132,7 +132,7 @@ services:
 
   # Nginx - Web Server
   nginx:
-    image: nginx:1.28-alpine
+    image: nginx:1.30.4-alpine
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
