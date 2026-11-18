@@ -1,7 +1,7 @@
 services:
   # WordPress PHP-FPM with SQLite
   wordpress:
-    image: ghcr.io/yunussandikci/wordpress-sqlite:7.0.2-php8.4-fpm
+    image: ghcr.io/yunussandikci/wordpress-sqlite:7.1.4-php8.4-fpm@sha256:9ad4a757182d4d2de5d93b599c099307c2b48a0e26d5bc92c5f9bc252e792d82
     user: "33:33"
     restart: unless-stopped
     security_opt:
@@ -17,9 +17,9 @@ services:
       sh -c '
         # Keep SQLite integration always aligned with the image version on each deploy
         mkdir -p /var/www/html/wp-content/mu-plugins &&
-        # Only refresh files when SQLite integration version changes
-        SQLITE_SRC_VERSION="$$(grep -m1 "Version:" /usr/src/wordpress/wp-content/db.php | sed "s/.*Version:[[:space:]]*//")" &&
-        SQLITE_DST_VERSION="$$(grep -m1 "Version:" /var/www/html/wp-content/db.php 2>/dev/null | sed "s/.*Version:[[:space:]]*//")" &&
+        # Compare the plugin version itself, not the separately versioned db.php drop-in
+        SQLITE_SRC_VERSION="$$(sed -n "s/^Stable tag:[[:space:]]*//p" /usr/src/wordpress/wp-content/mu-plugins/sqlite-database-integration/readme.txt | head -n 1)" &&
+        SQLITE_DST_VERSION="$$(sed -n "s/^Stable tag:[[:space:]]*//p" /var/www/html/wp-content/mu-plugins/sqlite-database-integration/readme.txt 2>/dev/null | head -n 1)" &&
         if [ -n "$$SQLITE_SRC_VERSION" ] && [ "$$SQLITE_SRC_VERSION" = "$$SQLITE_DST_VERSION" ] && [ -d /var/www/html/wp-content/mu-plugins/sqlite-database-integration ]; then
           echo "SQLite integration already at version $$SQLITE_SRC_VERSION";
         else
