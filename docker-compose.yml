@@ -141,6 +141,7 @@ services:
     volumes:
       - wordpress-data:/srv
       - ./filebrowser.json:/config/settings.json
+      - ./filebrowser-start.sh:/etc/services.d/filebrowser/run:ro
       - filebrowser-data:/database
     networks:
       - wp-network
